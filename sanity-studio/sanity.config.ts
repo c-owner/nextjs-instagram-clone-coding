@@ -4,15 +4,15 @@ import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemas'
 
 export default defineConfig({
-  name: 'default',
-  title: 'Sanity Project',
+    name: 'default',
+    title: 'Sanity Project',
 
-  projectId: 'ipy4uwrh',
-  dataset: 'production',
+    projectId: '29xfkpix',
+    dataset: 'production',
 
-  plugins: [deskTool(), visionTool()],
+    plugins: [deskTool(), visionTool()],
 
-  schema: {
-    types: schemaTypes,
-  },
+    schema: {
+        types: schemaTypes,
+    },
 })
