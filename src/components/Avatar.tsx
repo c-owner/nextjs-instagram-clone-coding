@@ -10,7 +10,7 @@ export default function Avatar({ image, size = 'lg', highlight = false }: Props)
                 src={image ?? undefined}
                 alt="user profile"
                 referrerPolicy="no-referrer"
-                className={`bg-white rounded-full ${getImageSizeStyle(size)}`}
+                className={`bg-white object-cover rounded-full ${getImageSizeStyle(size)}`}
             />
         </div>
     );
