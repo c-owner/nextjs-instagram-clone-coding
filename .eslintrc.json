@@ -34,6 +34,9 @@
                 "endOfLine": "auto"
             }
         ],
+        "react/require-default-props": "off",
+        "@next/next/no-img-element": "off",
+        "no-param-reassign": "off",
         "no-restricted-globals": "off",
         "import/prefer-default-export": "off",
         "@typescript-eslint/ban-ts-comment": "off",

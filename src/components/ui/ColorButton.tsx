@@ -1,7 +1,7 @@
 type Props = {
     text: string;
     onClick: () => void;
-    size: 'sm' | 'md' | 'lg';
+    size?: 'sm' | 'lg';
 };
 
 export default function ColorButton({ text, onClick, size = 'sm' }: Props) {
