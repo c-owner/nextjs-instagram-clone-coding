@@ -31,3 +31,29 @@ export async function getUserByUsername(username: string) {
     "bookmarks":bookmarks[]->_id
     }`);
 }
+
+export async function searchUsers(keyword?: string) {
+    // name, username 타입 중에 keyword 단어가 포함되면 검색
+    const query = keyword ? `&& (name match "${keyword}*" || username match "${keyword}*")` : '';
+    return client.fetch(`
+        *[_type == "user" ${query}] | order(_createdAt desc) {
+        ...,
+        "following": count(following),
+        "followers": count(followers),
+        }
+    `);
+}
+/*
+export async function searchUsers(keyword?: string) {
+    // name, username 타입 중에 keyword 단어가 포함되면 검색
+    const query = keyword ? `&& (name match "*${keyword}*" || username match "*${keyword}*")` : '';
+    return client.fetch(`
+        *[_type == "user" ${query}] | order(_createdAt desc) {
+        ...,
+        following[]->{username,image},
+        followers[]->{username,image},
+        "cntFollowing":count(following),
+        "cntFollowers":count(followers),
+        }
+    `);
+} */
