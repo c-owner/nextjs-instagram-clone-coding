@@ -2,15 +2,28 @@
 
 import useSWR from 'swr';
 import { SimplePost } from '@/model/post';
-import { PropagateLoader } from 'react-spinners';
+import { GridLoader } from 'react-spinners';
+import PostListCard from '@/components/PostListCard';
 
 export default function PostList() {
     const { data: posts, isLoading: loading } = useSWR<SimplePost[]>('/api/posts');
-    if (loading) {
-        return <PropagateLoader size={8} color="red" />;
-    }
-    if (typeof posts !== 'object') {
-        return <div>Post가 없습니다.</div>;
-    }
-    return <ul>{posts && posts.map((post) => <li key={post.id}>{post.text}</li>)}</ul>;
+    return (
+        <section>
+            {loading && (
+                <div className="text-center mt-32 mb-32">
+                    <GridLoader color="red" />
+                </div>
+            )}
+            {posts && (
+                <ul>
+                    {posts &&
+                        posts.map((post) => (
+                            <li key={post.id} className="mb-4">
+                                <PostListCard post={post} />
+                            </li>
+                        ))}
+                </ul>
+            )}
+        </section>
+    );
 }
