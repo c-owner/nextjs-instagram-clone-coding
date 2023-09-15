@@ -12,7 +12,7 @@ export default function Avatar({ image, size = 'lg', highlight = false }: Props)
                 src={image ?? '/default_profile.png'}
                 alt="user profile"
                 referrerPolicy="no-referrer"
-                className={`bg-white object-cover rounded-full ${getImageSizeStyle(size)}`}
+                className={`bg-white object-cover rounded-full ${getImageSizeStyle(size).image}`}
             />
         </div>
     );
@@ -21,36 +21,26 @@ export default function Avatar({ image, size = 'lg', highlight = false }: Props)
 function getContainerStyle(size: AvatarSize, highlight: boolean): string {
     const baseStyle = 'rounded-full flex justify-center items-center';
     const highlightStyle = highlight ? 'bg-gradient-to-bl from-fuchsia-600 via-rose-500 to-amber-300' : '';
-    const sizeStyle = getContainerSize(size);
+    const { container } = getImageSizeStyle(size);
 
-    return `${baseStyle} ${highlightStyle} ${sizeStyle}`;
+    return `${baseStyle} ${highlightStyle} ${container}`;
 }
 
-function getContainerSize(size: AvatarSize): string {
+type ImageSizeStyle = {
+    container: string;
+    image: string;
+};
+function getImageSizeStyle(size: AvatarSize): ImageSizeStyle {
     // size === 'sm' ? 'w-9 h-9' : 'w-[68px] h-[68px]';
     switch (size) {
         case 'sm':
-            return 'w-9 h-9';
+            return { container: 'w-9 h-9', image: 'w-[34px] h-[34px] p-[0.1rem]' };
         case 'md':
-            return 'w-[42px] h-[42px]';
+            return { container: 'w-11 h-11', image: 'w-[42px] h-[42px] p-[0.2rem]' };
         case 'lg':
-            return 'w-[68px] h-[68px]';
+            return { container: 'w-[68px] h-[68px]', image: 'w-16 h-16 p-[0.3rem]' };
         case 'x-lg':
-            return 'w-[142px] h-[142px]';
-        default:
-            throw new Error(`Unsupported type size: ${size}`);
-    }
-}
-function getImageSizeStyle(size: AvatarSize): string {
-    switch (size) {
-        case 'sm':
-            return 'w-[34px] h-[34px] p-[0.1rem]';
-        case 'md':
-            return 'w-[42px]] h-[42px] p-[0.2rem]';
-        case 'lg':
-            return 'w-16 h-16 p-[0.3rem]';
-        case 'x-lg':
-            return 'w-[138px]] h-[138px] p-[0.3rem]';
+            return { container: 'w-[142px] h-[142px]', image: 'w-[138px] h-[138px] p-[0.3rem]' };
         default:
             throw new Error(`Unsupported type size: ${size}`);
     }
