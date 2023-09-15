@@ -1,7 +1,7 @@
-import { User } from '@/model/user';
+import { AuthUser } from '@/model/authUser';
 
 declare module 'next-auth' {
     interface Session {
-        user: User;
+        user: AuthUser;
     }
 }

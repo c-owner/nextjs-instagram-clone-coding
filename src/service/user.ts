@@ -1,5 +1,5 @@
 import { client } from '@/service/sanity';
-import { ProfileUser } from '@/model/user';
+import { SearchUser } from '@/model/authUser';
 
 type OAuthUser = {
     id: string;
@@ -35,7 +35,7 @@ export async function getUserByUsername(username: string) {
 
 export async function searchUsers(keyword?: string) {
     // name, username 타입 중에 keyword 단어가 포함되면 검색
-    const query = keyword ? `&& (name match "${keyword}*" || username match "${keyword}*")` : '';
+    const query = keyword ? `&& (name match "*${keyword}*" || username match "*${keyword}*")` : '';
     return client
         .fetch(
             `
@@ -47,24 +47,30 @@ export async function searchUsers(keyword?: string) {
     `
         )
         .then((users) =>
-            users.map((user: ProfileUser) => ({
+            users.map((user: SearchUser) => ({
                 ...user,
                 following: user.following ?? 0,
                 followers: user.followers ?? 0
             }))
         );
 }
-/*
-export async function searchUsers(keyword?: string) {
-    // name, username 타입 중에 keyword 단어가 포함되면 검색
-    const query = keyword ? `&& (name match "*${keyword}*" || username match "*${keyword}*")` : '';
-    return client.fetch(`
-        *[_type == "user" ${query}] | order(_createdAt desc) {
-        ...,
-        following[]->{username,image},
-        followers[]->{username,image},
-        "cntFollowing":count(following),
-        "cntFollowers":count(followers),
-        }
-    `);
-} */
+
+export async function getUserForProfile(username: string) {
+    return client
+        .fetch(
+            `*[_type == "user" && username == "${username}"][0]{
+      ...,
+      "id":_id,
+      "following": count(following),
+      "followers": count(followers),
+      "posts": count(*[_type=="post" && author->username == "${username}"])
+    }
+    `
+        )
+        .then((user) => ({
+            ...user,
+            following: user.following ?? 0,
+            followers: user.followers ?? 0,
+            posts: user.posts ?? 0
+        }));
+}
