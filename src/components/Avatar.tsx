@@ -9,7 +9,7 @@ export default function Avatar({ image, size = 'lg', highlight = false }: Props)
     return (
         <div className={getContainerStyle(size, highlight)}>
             <img
-                src={image ?? undefined}
+                src={image ?? '/default_profile.png'}
                 alt="user profile"
                 referrerPolicy="no-referrer"
                 className={`bg-white object-cover rounded-full ${getImageSizeStyle(size)}`}

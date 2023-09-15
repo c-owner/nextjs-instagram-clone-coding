@@ -1,4 +1,5 @@
 import { client } from '@/service/sanity';
+import { ProfileUser } from '@/model/user';
 
 type OAuthUser = {
     id: string;
@@ -35,13 +36,23 @@ export async function getUserByUsername(username: string) {
 export async function searchUsers(keyword?: string) {
     // name, username 타입 중에 keyword 단어가 포함되면 검색
     const query = keyword ? `&& (name match "${keyword}*" || username match "${keyword}*")` : '';
-    return client.fetch(`
+    return client
+        .fetch(
+            `
         *[_type == "user" ${query}] | order(_createdAt desc) {
         ...,
         "following": count(following),
         "followers": count(followers),
         }
-    `);
+    `
+        )
+        .then((users) =>
+            users.map((user: ProfileUser) => ({
+                ...user,
+                following: user.following ?? 0,
+                followers: user.followers ?? 0
+            }))
+        );
 }
 /*
 export async function searchUsers(keyword?: string) {
