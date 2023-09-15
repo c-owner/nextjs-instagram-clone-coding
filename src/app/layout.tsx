@@ -12,10 +12,7 @@ export const metadata: Metadata = {
         default: 'Instagram',
         template: 'Instagram | %s'
     },
-    description: 'Instagram',
-    icons: {
-        icon: '/favicon.ico'
-    }
+    description: 'Instagram Photos'
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

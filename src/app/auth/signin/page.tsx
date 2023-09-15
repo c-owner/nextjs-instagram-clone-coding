@@ -3,12 +3,19 @@ import { authOptions } from '@/pages/api/auth/[...nextauth]';
 import { redirect } from 'next/navigation';
 import { getProviders } from 'next-auth/react';
 import Signin from '@/components/Signin';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: 'Sign In',
+    description: 'Signup or Login to Instagram'
+};
 
 type Props = {
     searchParams: {
         callbackUrl: string;
     };
 };
+
 export default async function SignInPage({ searchParams: { callbackUrl } }: Props) {
     const session = await getServerSession(authOptions);
     if (session) {
