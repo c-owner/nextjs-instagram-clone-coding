@@ -6,22 +6,22 @@ export default {
         {
             title: 'username', // ui 상 보는 이름
             name: 'username', // 실제 데이터에 접근, 코드 상에서의 Key 역할하는 이름
-            type: 'string',
+            type: 'string'
         },
         {
             title: 'Name', // 사용자의 실제 이름
             name: 'name',
-            type: 'string',
+            type: 'string'
         },
         {
             title: 'Email',
             name: 'email',
-            type: 'string',
+            type: 'string'
         },
         {
             title: 'Image',
             name: 'image',
-            type: 'string',
+            type: 'string'
         },
         {
             title: 'Following',
@@ -30,10 +30,10 @@ export default {
             of: [
                 {
                     type: 'reference',
-                    to: [{type: 'user'}],
-                },
+                    to: [{ type: 'user' }]
+                }
             ],
-            validation: (Rule) => Rule.unique(),
+            validation: (Rule) => Rule.unique()
         },
         {
             title: 'Followers',
@@ -42,10 +42,10 @@ export default {
             of: [
                 {
                     type: 'reference',
-                    to: [{type: 'user'}],
-                },
+                    to: [{ type: 'user' }]
+                }
             ],
-            validation: (Rule) => Rule.unique(),
+            validation: (Rule) => Rule.unique()
         },
         {
             title: 'Bookmarks',
@@ -54,16 +54,16 @@ export default {
             of: [
                 {
                     type: 'reference',
-                    to: [{type: 'post'}],
-                },
+                    to: [{ type: 'post' }]
+                }
             ],
-            validation: (Rule) => Rule.unique(),
-        },
+            validation: (Rule) => Rule.unique()
+        }
     ],
     preview: {
         select: {
             title: 'name',
-            subtitle: 'username',
-        },
-    },
-}
+            subtitle: 'username'
+        }
+    }
+};
