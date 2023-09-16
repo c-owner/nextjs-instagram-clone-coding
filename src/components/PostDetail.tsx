@@ -1,20 +1,19 @@
-'use client';
-
 import { FullPost, SimplePost } from '@/model/post';
-import useSWR from 'swr';
 import Image from 'next/image';
-import PostUserAvatar from '@/components/PostUserAvatar';
-import ActionBar from '@/components/ActionBar';
-import CommentForm from '@/components/CommentForm';
-import Avatar from '@/components/Avatar';
+import userSWR from 'swr';
+import ActionBar from './ActionBar';
+import Avatar from './Avatar';
+import CommentForm from './CommentForm';
+import PostUserAvatar from './PostUserAvatar';
 
 type Props = {
     post: SimplePost;
 };
 export default function PostDetail({ post }: Props) {
-    const { id, userImage, username, image, createdAt, likes, text } = post;
-    const { data } = useSWR<FullPost>(`/api/posts/${id}`);
+    const { id, userImage, username, image, createdAt, likes } = post;
+    const { data } = userSWR<FullPost>(`/api/posts/${id}`);
     const comments = data?.comments;
+
     return (
         <section className="flex w-full h-full">
             <div className="relative basis-3/5">
@@ -24,9 +23,9 @@ export default function PostDetail({ post }: Props) {
                 <PostUserAvatar image={userImage} username={username} />
                 <ul className="border-t border-gray-200 h-full overflow-y-auto p-4 mb-1">
                     {comments &&
-                        comments.map(({ commentImage, username: commentUsername, comment }, index) => (
+                        comments.map(({ image, username: commentUsername, comment }, index) => (
                             <li key={index} className="flex items-center mb-1">
-                                <Avatar image={commentImage} size="sm" highlight={commentUsername === username} />
+                                <Avatar image={image} size="small" highlight={commentUsername === username} />
                                 <div className="ml-2">
                                     <span className="font-bold mr-1">{commentUsername}</span>
                                     <span>{comment}</span>
@@ -34,7 +33,7 @@ export default function PostDetail({ post }: Props) {
                             </li>
                         ))}
                 </ul>
-                <ActionBar likes={likes} username={username} createdAt={createdAt} />
+                <ActionBar post={post} />
                 <CommentForm />
             </div>
         </section>

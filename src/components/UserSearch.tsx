@@ -2,7 +2,7 @@
 
 import useSWR from 'swr';
 import { FormEvent, useEffect, useState } from 'react';
-import { SearchUser } from '@/model/authUser';
+import { SearchUser } from '@/model/user';
 import GridSpinner from '@/components/ui/GridSpinner';
 import UserCard from '@/components/UserCard';
 import useDebounce from '@/hooks/debounce';

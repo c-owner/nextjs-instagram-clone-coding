@@ -1,6 +1,6 @@
 'use client';
 
-import { ProfileUser } from '@/model/authUser';
+import { ProfileUser } from '@/model/user';
 import { useState } from 'react';
 import PostIcon from '@/components/ui/icons/PostIcon';
 import BookmarkIcon from '@/components/ui/icons/BookmarkIcon';

@@ -1,5 +1,5 @@
-import { AuthUser } from '@/model/authUser';
 import Avatar from '@/components/Avatar';
+import { AuthUser } from '@/model/user';
 
 type Props = {
     user: AuthUser;

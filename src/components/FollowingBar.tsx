@@ -1,6 +1,6 @@
 'use client';
 
-import { HomeUser } from '@/model/authUser';
+import { HomeUser } from '@/model/user';
 import Link from 'next/link';
 import { PropagateLoader } from 'react-spinners';
 import useSWR from 'swr';

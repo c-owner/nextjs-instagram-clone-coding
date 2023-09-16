@@ -1,6 +1,6 @@
 'use client';
 
-import { HomeUser, ProfileUser } from '@/model/authUser';
+import { HomeUser, ProfileUser } from '@/model/user';
 import useSWR from 'swr';
 import Button from '@/components/ui/Button';
 

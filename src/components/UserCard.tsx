@@ -1,4 +1,4 @@
-import { SearchUser } from '@/model/authUser';
+import { SearchUser } from '@/model/user';
 import Link from 'next/link';
 import Avatar from '@/components/Avatar';
 

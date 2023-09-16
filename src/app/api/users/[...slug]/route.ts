@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getLikedPostsOf, getPostOf, getSavedPostsOf } from '@/service/posts';
+import { getLikedPostsOf, getPostsOf, getSavedPostsOf } from '@/service/posts';
 
 type Context = {
     params: {
@@ -15,7 +15,7 @@ export async function GET(_: NextRequest, context: Context) {
 
     const [username, query] = slug;
 
-    let request = getPostOf(username);
+    let request = getPostsOf(username);
 
     if (query === 'liked') {
         request = getLikedPostsOf(username);
