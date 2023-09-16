@@ -49,8 +49,8 @@ export async function searchUsers(keyword?: string) {
         .then((users) =>
             users.map((user: SearchUser) => ({
                 ...user,
-                following: user.following ?? 0,
-                followers: user.followers ?? 0
+                following: user?.following ?? 0,
+                followers: user?.followers ?? 0
             }))
         );
 }
@@ -69,8 +69,8 @@ export async function getUserForProfile(username: string) {
         )
         .then((user) => ({
             ...user,
-            following: user.following ?? 0,
-            followers: user.followers ?? 0,
-            posts: user.posts ?? 0
+            following: user?.following ?? 0,
+            followers: user?.followers ?? 0,
+            posts: user?.posts ?? 0
         }));
 }
