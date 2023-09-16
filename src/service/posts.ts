@@ -77,6 +77,14 @@ export async function getSavedPostsOf(username: string) {
         .then(mapPosts);
 }
 
+export async function addLikedPost(postId: string, username: string) {
+    return client
+        .patch(postId)
+        .setIfMissing({ likes: [] })
+        .insert('after', 'likes[-1]', [{ _ref: username }])
+        .commit();
+}
+
 function mapPosts(posts: SimplePost[]) {
     return posts.map((post) => ({ ...post, image: urlFor(post.image) }));
 }
