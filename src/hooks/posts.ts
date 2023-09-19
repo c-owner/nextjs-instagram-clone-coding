@@ -2,7 +2,7 @@ import useSWR from 'swr';
 import { SimplePost } from '@/model/post';
 
 async function updateLike(id: string, like: boolean) {
-    return fetch('api/likes', {
+    return fetch('/api/likes', {
         method: 'PUT',
         body: JSON.stringify({ id, like })
     }).then((res) => res.json());

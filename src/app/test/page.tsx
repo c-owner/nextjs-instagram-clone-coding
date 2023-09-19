@@ -12,7 +12,7 @@ export default function TestPage() {
         if (category === '정육') {
             testArr.push('정육');
         }
-        arr.find((item) => {
+        return arr.find((item) => {
             return category === item && testArr.push(category);
         });
     });
