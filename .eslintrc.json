@@ -31,7 +31,13 @@
         "prettier/prettier": [
             "error",
             {
-                "endOfLine": "auto"
+                "singleQuote": true,
+                "semi": true,
+                "useTabs": false,
+                "tabWidth": 4,
+                "trailingComma": "all",
+                "endOfLine": "lf",
+                "printWidth": 100
             }
         ],
         "no-unsafe-optional-chaining": "off",
