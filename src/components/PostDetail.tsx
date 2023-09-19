@@ -3,6 +3,7 @@ import Image from 'next/image';
 import userSWR from 'swr';
 import useFullPost from '@/hooks/post';
 import useMe from '@/hooks/me';
+import GridSpinner from '@/components/ui/GridSpinner';
 import ActionBar from './ActionBar';
 import Avatar from './Avatar';
 import CommentForm from './CommentForm';
@@ -13,7 +14,7 @@ type Props = {
 };
 export default function PostDetail({ post }: Props) {
     const { id, userImage, username, image } = post;
-    const { post: data, postComment } = useFullPost(id);
+    const { post: data, postComment, isLoading, error } = useFullPost(id);
     const comments = data?.comments;
 
     return (
@@ -31,6 +32,7 @@ export default function PostDetail({ post }: Props) {
             <div className="w-full basis-2/5 flex flex-col">
                 <PostUserAvatar image={userImage} username={username} />
                 <ul className="border-t border-gray-200 h-full overflow-y-auto p-4 mb-1">
+                    {isLoading && <GridSpinner />}
                     {comments &&
                         comments.map(({ image, username: commentUsername, comment }, index) => (
                             <li key={index} className="flex items-center mb-1">
