@@ -1,4 +1,4 @@
-import { FullPost, SimplePost } from '@/model/post';
+import { Comment, FullPost, SimplePost } from '@/model/post';
 import Image from 'next/image';
 import userSWR from 'swr';
 import useFullPost from '@/hooks/post';
@@ -12,17 +12,10 @@ type Props = {
     post: SimplePost;
 };
 export default function PostDetail({ post }: Props) {
-    const { id, userImage, username, image, createdAt, likes } = post;
+    const { id, userImage, username, image } = post;
     const { post: data, postComment } = useFullPost(id);
-
-    const { user } = useMe();
-
     const comments = data?.comments;
 
-    const handlePostComment = (comment: string) => {
-        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-        user && postComment({ comment, username: user.username, image: user.image });
-    };
     return (
         <section className="flex w-full h-full">
             <div className="relative basis-3/5">
@@ -53,8 +46,7 @@ export default function PostDetail({ post }: Props) {
                             </li>
                         ))}
                 </ul>
-                <ActionBar post={post}></ActionBar>
-                <CommentForm onPostComment={handlePostComment} />
+                <ActionBar post={post} onComment={postComment} />
             </div>
         </section>
     );

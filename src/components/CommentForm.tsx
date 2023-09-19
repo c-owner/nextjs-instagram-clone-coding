@@ -2,6 +2,7 @@
 
 import SmileIcon from '@/components/ui/icons/SmileIcon';
 import { useState } from 'react';
+import { Comment } from '@/model/post';
 
 type Props = {
     onPostComment: (comment: string) => void;

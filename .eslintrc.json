@@ -31,15 +31,10 @@
         "prettier/prettier": [
             "error",
             {
-                "singleQuote": true,
-                "semi": true,
-                "useTabs": false,
-                "tabWidth": 4,
-                "trailingComma": "all",
-                "endOfLine": "lf",
-                "printWidth": 100
+                "endOfLine": "auto"
             }
         ],
+        "consistent-return": "off",
         "no-unsafe-optional-chaining": "off",
         "react/require-default-props": "off",
         "@next/next/no-img-element": "off",
