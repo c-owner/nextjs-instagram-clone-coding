@@ -40,7 +40,9 @@ export default function useMe() {
 
     const toggleFollow = useCallback(
         (targetId: string, follow: boolean) => {
-            return mutate(updateFollow(targetId, follow), { populateCache: false });
+            return mutate(updateFollow(targetId, follow), {
+                populateCache: false
+            });
         },
         [mutate]
     );

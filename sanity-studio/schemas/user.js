@@ -4,12 +4,12 @@ export default {
 	type: 'document',
 	fields: [
 		{
-			title: 'username', // ui 상 보는 이름
-			name: 'username', // 실제 데이터에 접근, 코드 상에서의 Key 역할하는 이름
+			title: 'Username',
+			name: 'username',
 			type: 'string',
 		},
 		{
-			title: 'Name', // 사용자의 실제 이름
+			title: 'Name',
 			name: 'name',
 			type: 'string',
 		},

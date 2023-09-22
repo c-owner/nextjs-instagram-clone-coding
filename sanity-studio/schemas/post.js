@@ -60,11 +60,11 @@ export default {
 			media: 'photo',
 		},
 		prepare(selection) {
-			const {title, media, authorName, authorUsername} = selection
+			const {title, authorName, authorUsername, media} = selection
 			return {
 				title,
-				media,
 				subtitle: `by ${authorName} (${authorUsername})`,
+				media,
 			}
 		},
 	},

@@ -1,9 +1,9 @@
-import { NextRequest, NextResponse } from 'next/server';
 import { getLikedPostsOf, getPostsOf, getSavedPostsOf } from '@/service/posts';
+import { NextRequest, NextResponse } from 'next/server';
 
 type Context = {
     params: {
-        slug: string[]; // 중첩 라우트
+        slug: string[];
     };
 };
 export async function GET(_: NextRequest, context: Context) {
@@ -15,12 +15,12 @@ export async function GET(_: NextRequest, context: Context) {
 
     const [username, query] = slug;
 
-    let request = getPostsOf(username);
-
-    if (query === 'liked') {
-        request = getLikedPostsOf(username);
-    } else if (query === 'saved') {
-        request = getSavedPostsOf(username);
+    let request = getPostsOf;
+    if (query === 'saved') {
+        request = getSavedPostsOf;
+    } else if (query === 'liked') {
+        request = getLikedPostsOf;
     }
-    return request.then((data) => NextResponse.json(data, { status: 200 }));
+
+    return request(username).then((data) => NextResponse.json(data));
 }
