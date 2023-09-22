@@ -1,17 +1,16 @@
 'use client';
 
+import { CacheKeysContext } from '@/context/CacheKeysContext';
 import { ProfileUser } from '@/model/user';
 import { useState } from 'react';
-import PostIcon from '@/components/ui/icons/PostIcon';
-import BookmarkIcon from '@/components/ui/icons/BookmarkIcon';
-import HeartIcon from '@/components/ui/icons/HeartIcon';
-import PostGrid from '@/components/PostGrid';
-import { CacheKeysContext } from '@/context/CacheKeysContext';
+import PostGrid from './PostGrid';
+import BookmarkIcon from './ui/icons/BookmarkIcon';
+import HeartIcon from './ui/icons/HeartIcon';
+import PostIcon from './ui/icons/PostIcon';
 
 type Props = {
     user: ProfileUser;
 };
-
 const tabs = [
     { type: 'posts', icon: <PostIcon /> },
     { type: 'saved', icon: <BookmarkIcon className="w-3 h-3" /> },
@@ -22,7 +21,7 @@ export default function UserPosts({ user: { username } }: Props) {
 
     return (
         <section>
-            <ul className="flex justify-center items-center uppercase">
+            <ul className="flex justify-center uppercase">
                 {tabs.map(({ type, icon }) => (
                     <li
                         className={`mx-12 p-4 cursor-pointer border-black ${
