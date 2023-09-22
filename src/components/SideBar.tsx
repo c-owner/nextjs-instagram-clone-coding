@@ -17,7 +17,9 @@ export default function SideBar({ user: { name, username, email, image } }: Prop
             <p className="text-sm text-neutral-500 mt-8">
                 About • Help • Press • API • Jobs • Privacy • Terms • Location • Language
             </p>
-            <p className="font-bold text-sm mt-8 text-neutral-500">©Copyright INSTANTGRAM from METAL, Inc.</p>
+            <p className="font-bold text-sm mt-8 text-neutral-500">
+                ©Copyright INSTANTGRAM from METAL, Inc.
+            </p>
         </>
     );
 }

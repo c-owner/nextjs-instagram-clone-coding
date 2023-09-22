@@ -10,7 +10,11 @@ import useDebounce from '@/hooks/debounce';
 export default function UserSearch() {
     const [keyword, setKeyword] = useState('');
     const debounceKeyword = useDebounce(keyword);
-    const { data: users, isLoading: loading, error } = useSWR<SearchUser[]>(`/api/search/${debounceKeyword}`);
+    const {
+        data: users,
+        isLoading: loading,
+        error
+    } = useSWR<SearchUser[]>(`/api/search/${debounceKeyword}`);
 
     const onSubmit = (e: FormEvent) => {
         e.preventDefault();

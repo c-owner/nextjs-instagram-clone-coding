@@ -22,7 +22,9 @@ export default function Avatar({ image, size = 'large', highlight = false }: Pro
 
 function getContainerStyle(size: AvatarSize, highlight: boolean): string {
     const baseStyle = 'rounded-full flex justify-center items-center';
-    const highlightStyle = highlight ? 'bg-gradient-to-bl from-fuchsia-600 via-rose-500 to-amber-300' : '';
+    const highlightStyle = highlight
+        ? 'bg-gradient-to-bl from-fuchsia-600 via-rose-500 to-amber-300'
+        : '';
     const { container } = getImageSizeStyle(size);
     return `${baseStyle} ${highlightStyle} ${container}`;
 }

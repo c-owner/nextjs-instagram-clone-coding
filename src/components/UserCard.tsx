@@ -5,7 +5,9 @@ import Avatar from '@/components/Avatar';
 type Props = {
     user: SearchUser;
 };
-export default function UserCard({ user: { name, username, image, email, followers, following } }: Props) {
+export default function UserCard({
+    user: { name, username, image, email, followers, following }
+}: Props) {
     return (
         <Link
             className="flex items-center w-full rounded-sm border border-neutral-300 mb-2 p-4 bg-white hover:bg-neutral-50"

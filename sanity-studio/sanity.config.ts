@@ -7,15 +7,15 @@ import {getStartedPlugin} from './plugins/sanity-plugin-tutorial'
 const devOnlyPlugins = [getStartedPlugin()]
 
 export default defineConfig({
-    name: 'default',
-    title: 'corner-instagram',
+	name: 'default',
+	title: 'corner-instagram',
 
-    projectId: '29xfkpix',
-    dataset: 'production',
+	projectId: '29xfkpix',
+	dataset: 'production',
 
-    plugins: [deskTool(), visionTool(), ...(isDev ? devOnlyPlugins : [])],
+	plugins: [deskTool(), visionTool(), ...(isDev ? devOnlyPlugins : [])],
 
-    schema: {
-        types: schemaTypes,
-    },
+	schema: {
+		types: schemaTypes,
+	},
 })

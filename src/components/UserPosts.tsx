@@ -24,7 +24,9 @@ export default function UserPosts({ user: { username } }: Props) {
             <ul className="flex justify-center items-center uppercase">
                 {tabs.map(({ type, icon }) => (
                     <li
-                        className={`mx-12 p-4 cursor-pointer border-black ${type === query && 'font-bold border-t'}`}
+                        className={`mx-12 p-4 cursor-pointer border-black ${
+                            type === query && 'font-bold border-t'
+                        }`}
                         key={type}
                         onClick={() => setQuery(type)}
                     >

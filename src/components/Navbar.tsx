@@ -16,18 +16,18 @@ const menu = [
     {
         href: '/',
         icon: <HomeIcon />,
-        clickedIcon: <HomeFillIcon />,
+        clickedIcon: <HomeFillIcon />
     },
     {
         href: '/search',
         icon: <SearchIcon />,
-        clickedIcon: <SearchFillIcon />,
+        clickedIcon: <SearchFillIcon />
     },
     {
         href: '/new',
         icon: <NewIcon />,
-        clickedIcon: <NewFillIcon />,
-    },
+        clickedIcon: <NewFillIcon />
+    }
 ];
 export default function Navbar() {
     const { data: session } = useSession();

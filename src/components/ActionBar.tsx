@@ -34,7 +34,7 @@ export default function ActionBar({ post, children, onComment }: Props) {
     };
 
     const handleComment = (comment: string) => {
-        user && onComment({ comment, username: user.username, image: user.image });
+        return user && onComment({ comment, username: user.username, image: user.image });
     };
     return (
         <>

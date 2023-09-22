@@ -11,5 +11,7 @@ export async function GET(req: Request) {
         return new Response('Authentication Error', { status: 401 });
     }
 
-    return getUserByUsername(user.username).then((data) => NextResponse.json(data, { status: 200 }));
+    return getUserByUsername(user.username).then((data) =>
+        NextResponse.json(data, { status: 200 })
+    );
 }
