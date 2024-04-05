@@ -15,6 +15,14 @@ async function addComment(id: string, comment: string) {
         body: JSON.stringify({ id, comment })
     }).then((res) => res.json());
 }
+
+async function addPost(content: string) {
+    return fetch('/api/posts', {
+        method: 'POST',
+        body: JSON.stringify({ content })
+    }).then((res) => res.json());
+}
+
 export default function usePosts() {
     const cacheKeys = useCacheKeys();
     const { data: posts, isLoading, error, mutate } = useSWR<SimplePost[]>(cacheKeys.postsKey);
